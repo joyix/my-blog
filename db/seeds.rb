@@ -11,3 +11,9 @@ User.create!(name: "joyix",
             password: "123456",
             password_confirmation: "123456",
             admin: true)
+
+User.create!(name: "zuobian",
+            email: "zuobian@163.com",
+            password: "123456",
+            password_confirmation: "123456")
+
