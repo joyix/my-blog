@@ -17,3 +17,19 @@ User.create!(name: "zuobian",
             password: "123456",
             password_confirmation: "123456")
 
+User.create!(name: "joy",
+            email: "joy@163.com",
+            password: "123456",
+            password_confirmation: "123456")
+
+User.create!(name: "youbian",
+             email: "youbian@163.com",
+             password: "123456",
+             password_confirmation: "123456")
+
+users = User.all
+user = User.first
+following = users[2..4]
+followers = users[2..4]
+following.each { |followed| user.follow(followed) }
+followers.each { |follower| follower.follow(user) }

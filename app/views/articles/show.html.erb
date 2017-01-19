@@ -1,0 +1,20 @@
+<h1><%= @article.title %></h1>
+<p>view_count:<%= @article.view_count %></p>
+<p>like_count: <%= @article.like_count %></p>
+<p><%= @article.content %></p>
+<%= link_to 'like', like_article_path(@article), method: :post %>
+
+<h2>Comments</h2>
+<% @article.comments.each do |comment| %>
+    <p><%= comment.body %>
+    <% if current_user?(@article.user) %>
+        <%= link_to 'delete', [comment.article, comment],  method: :delete, data: { confirm: 'You sure?'} %>
+    <% end %></p>
+<% end %>
+
+<h2>Add a comment</h2>
+<%= form_for([@article, @article.comments.build]) do |f| %>
+    <P><%= f.text_area :body %></p>
+    <%= f.submit %>
+<% end %>
+
