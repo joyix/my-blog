@@ -14,10 +14,6 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
 
-  def feed
-    Article.where("user_id = ?", id)
-  end
-
   def follow(other_user)
     active_relationships.create(followed_id: other_user.id)
   end
